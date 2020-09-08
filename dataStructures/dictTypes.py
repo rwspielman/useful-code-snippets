@@ -18,3 +18,8 @@ class TupleDict(dict):
             raise KeyError(item)
         else:
             return super().__getitem__(item)
+
+class Tree(dict):
+    def __missing__(self, key):
+        value = self[key] = type(self)()
+        return value
